@@ -5,7 +5,7 @@ import { DELETE_TODO } from "../graphql/Mutation";
 import { GET_TODOS } from "../graphql/Query";
 import { TodoContext } from "../TodoContext";
 
-const Todo = ({ id, title, detail, date }) => {
+const Todo = ({ id, title, detail, date, time }) => {
     const [deleteTodo] = useMutation(DELETE_TODO);
 
     const { selectedId, setSelectedId } = useContext(TodoContext);
@@ -32,6 +32,7 @@ const Todo = ({ id, title, detail, date }) => {
                 <small>{moment(date).format("MMM Do YY")}</small>
             </div>
             <p className="mb-1">{detail} </p>
+            {time && <p className="mb-1">Time: {time} hours</p>}
             <small onClick={() => removeTodo(id)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

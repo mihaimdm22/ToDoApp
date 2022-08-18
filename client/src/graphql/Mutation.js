@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 export const ADD_TODO = gql`
-    mutation addTodo($title: String, $detail: String, $date: Date) {
-        addTodo(title: $title, detail: $detail, date: $date) {
+    mutation addTodo($title: String, $detail: String, $date: Date, $time: Int) {
+        addTodo(title: $title, detail: $detail, date: $date, time: $time) {
             id
             title
             detail
             date
+            time
         }
     }
 `;
@@ -22,12 +23,20 @@ export const UPDATE_TODO = gql`
         $title: String
         $detail: String
         $date: Date
+        $time: Int
     ) {
-        updateTodo(id: $id, title: $title, detail: $detail, date: $date) {
+        updateTodo(
+            id: $id
+            title: $title
+            detail: $detail
+            date: $date
+            time: $time
+        ) {
             id
             title
             detail
             date
+            time
         }
     }
 `;

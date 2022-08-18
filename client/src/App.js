@@ -26,6 +26,7 @@ function App() {
                             title={todo.title}
                             detail={todo.detail}
                             date={todo.date}
+                            time={todo.time}
                         />
                     ))}
                 </div>

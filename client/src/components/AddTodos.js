@@ -10,6 +10,7 @@ const AddTodos = () => {
         title: "",
         detail: "",
         date: "",
+        time: null,
     });
 
     const { selectedId, setSelectedId } = useContext(TodoContext);
@@ -21,7 +22,7 @@ const AddTodos = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const { title, detail, date } = e.target.elements;
+        const { title, detail, date, time } = e.target.elements;
         if (!title.value) {
             alert("Please enter a title");
         }
@@ -31,6 +32,7 @@ const AddTodos = () => {
                     title: title.value,
                     detail: detail.value,
                     date: date.value,
+                    time: parseInt(time.value),
                 },
                 refetchQueries: [{ query: GET_TODOS }],
             });
@@ -39,6 +41,7 @@ const AddTodos = () => {
                 title: "",
                 detail: "",
                 date: "",
+                time: null,
             });
         } else {
             updateTodo({
@@ -47,6 +50,7 @@ const AddTodos = () => {
                     title: title.value,
                     detail: detail.value,
                     date: date.value,
+                    time: parseInt(time.value),
                 },
                 refetchQueries: [{ query: GET_TODOS }],
             });
@@ -55,6 +59,7 @@ const AddTodos = () => {
                 title: "",
                 detail: "",
                 date: "",
+                time: null,
             });
         }
     };
@@ -68,6 +73,7 @@ const AddTodos = () => {
                     title: "",
                     detail: "",
                     date: "",
+                    time: null,
                 });
             } else {
                 console.log("inside input area");
@@ -128,6 +134,19 @@ const AddTodos = () => {
                             : moment().format("yyyy-MM-DD")
                     }
                     onChange={(e) => setTodo({ ...todo, date: e.target.value })}
+                />
+            </div>
+            <div className="form-group mb-3">
+                <label>Time</label>
+                <input
+                    type="number"
+                    name="time"
+                    className="form-control"
+                    placeholder="Enter Time in Hours"
+                    value={todo.time ? todo.time : ""}
+                    onChange={(e) =>
+                        setTodo({ ...todo, time: parseInt(e.target.value) })
+                    }
                 />
             </div>
             <button type="submit" className="btn btn-primary">
