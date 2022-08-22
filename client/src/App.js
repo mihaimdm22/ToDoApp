@@ -18,7 +18,7 @@ function App() {
         <TodoContext.Provider value={{ selectedId, setSelectedId }}>
             <div className="container todobox">
                 <AddTodos />
-                <div className="list-group mt-4">
+                <div className="d-flex">
                     {data?.getTodos.map((todo) => (
                         <Todo
                             key={todo.id}
