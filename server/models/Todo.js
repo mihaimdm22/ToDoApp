@@ -8,6 +8,11 @@ const todoSchema = new Schema(
         },
         detail: String,
         date: Date,
+        user: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "User",
+        },
+        time: Number,
     },
     { timestamps: true }
 );

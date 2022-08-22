@@ -6,6 +6,7 @@ export const GET_TODOS = gql`
             title
             detail
             date
+            time
         }
     }
 `;
@@ -17,6 +18,7 @@ export const GET_TODO = gql`
             title
             detail
             date
+            time
         }
     }
 `;
